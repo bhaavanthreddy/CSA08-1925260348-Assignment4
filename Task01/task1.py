@@ -16,11 +16,11 @@ def process_mess_bill(filename):
                 if len(parts) != 3:
                     raise ValueError("Invalid number of fields")
 
-                name = parts[1].strip()
-                amount = float(parts[2].strip())
+                name = parts[1]
+                amount = float(parts[2])
 
                 total += amount
-                report.append(f"{name} {amount:.2f}")
+                report.append(name + " " + str(amount))
 
             except ValueError:
                 rejected_lines.append((line_number, line))
@@ -31,7 +31,7 @@ def process_mess_bill(filename):
     for item in report:
         print(item)
 
-    print("Total", total)
+    print("Total:", total)
 
     print("\nRejected Lines")
     print("--------------")
